@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PhotoCard from "./Photo";
 const api_key = process.env.REACT_APP_NASA_KEY;
 console.log("key", process.env.REACT_APP_NASA_KEY);
 
@@ -10,7 +11,7 @@ export default function NasaPhoto() {
 
     async function fetchPhoto() {
       const response = await fetch(
-        `https://api.nasa.gov/planetary/earth/imagery?lon=100.75&lat=1.5&date=2024-05-04&api_key=${api_key}`
+        `https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=${api_key}`
       );
       const data = await response.json();
       console.log("RES",data);
@@ -23,32 +24,18 @@ export default function NasaPhoto() {
   }
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-800 py-4">
-      <div className=" max-w-3xl bg-gray-400 shadow-lg rounded-lg overflow-hidden">
-        <div className="relative">
-          {photoData && (
-            photoData.media_type === "image" ? (
-              <img src={photoData.url} alt={photoData.title} className="w-full h-full object-cover" />
-            ) : (
-              <iframe
-                title={photoData.title}
-                src={photoData.url}
-                className="w-full h-64"
-                style={{ border: 'none' }}
-                gesture="media"
-                allow="encrypted-media"
-                allowFullScreen
-              />
-            )
-          )}
-        </div>
+    <div className="bg-gray-800 text-white min-h-screen">
+          <header className="p-4">
+              <h1 className="text-3xl font-bold">Curiosity Rover Photos</h1>
 
-        <div className="p-4">
-          <h1 className="text-xl font-bold">{photoData.title}</h1>
-          <p className="text-gray-600"><b>{photoData.date}</b></p>
-          <p className="text-gray-800">{photoData.explanation}</p>
-        </div>
+          </header>
+          <main className="container mx-auto py-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                  {photoData.map((photo) => (
+                      <PhotoCard key={photo.identifier} photo={photo} />
+                  ))}
+              </div>
+          </main>
       </div>
-    </div>
   );
 }
