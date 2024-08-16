@@ -1,4 +1,4 @@
-Hosted Application URL: https://af-nasaapis-assignment2.netlify.app/
+Hosted Application URL: https://nasaapis-astro.netlify.app/
 
 Backend Deployment (on Render): https://nasa-apis-af4b.onrender.com
 
