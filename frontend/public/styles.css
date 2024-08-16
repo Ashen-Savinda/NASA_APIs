@@ -544,3 +544,13 @@ video {
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }
+
+/* loadingspinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+

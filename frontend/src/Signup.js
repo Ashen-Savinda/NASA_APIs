@@ -15,7 +15,7 @@ const Signup = () => {
     };
 
     return (
-        <div className='bg-gray-700 py-5 h-screen'>
+        <div className='bg-gray-400 py-5 h-screen'>
             <form className="max-w-sm mx-auto p-8 bg-gray-100 shadow-lg rounded-lg py-7 signup" onSubmit={handleSubmit}>
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Sign up</h3>
                 <label className="block mb-1 text-sm text-gray-600">Email:</label>
